@@ -43,14 +43,31 @@ a + a {
 }
 
 .controls {
-    position: absolute;
-    top: 4px;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 12px;
     color: #ccc;
     display: flex;
     gap: 15px;
+}
+
+@media not (display-mode: window-controls-overlay) {
+    .controls {
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (display-mode: window-controls-overlay) {
+    .controls {
+        position: fixed;
+        left: env(titlebar-area-x);
+        top: env(titlebar-area-y);
+        width: env(titlebar-area-width);
+        height: env(titlebar-area-height);
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .controls label {
